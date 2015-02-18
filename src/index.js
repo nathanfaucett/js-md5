@@ -1,11 +1,9 @@
 var isArray = require("is_array"),
     fastSlice = require("fast_slice"),
-    crypt = require("crypt"),
-    charenc = require("charenc");
-
-
-var utf8 = charenc.utf8,
-    bin = charenc.bin;
+    crypto = require("crypto_browser"),
+    hex = require("hex_encoding"),
+    utf8 = require("utf8_encoding"),
+    bin = require("bin_encoding");
 
 
 function FF(a, b, c, d, x, s, t) {
@@ -43,7 +41,7 @@ function md5(message, options) {
         message = message.toString();
     }
 
-    m = crypt.bytesToWords(message);
+    m = crypto.bytesToWords(message);
     l = message.length * 8;
     a = 1732584193;
     b = -271733879;
@@ -140,7 +138,7 @@ function md5(message, options) {
         d = (d + dd) >>> 0;
     }
 
-    return crypt.endian([a, b, c, d]);
+    return crypto.endian([a, b, c, d]);
 }
 
 
@@ -150,9 +148,9 @@ module.exports = function(message, options) {
     if (message == null) {
         throw new TypeError("");
     } else {
-        digestbytes = crypt.wordsToBytes(md5(message, options));
+        digestbytes = crypto.wordsToBytes(md5(message, options));
         return options && options.asBytes ? digestbytes : (
-            options && options.asString ? bin.bytesToString(digestbytes) : crypt.bytesToHex(digestbytes)
+            options && options.asString ? bin.bytesToString(digestbytes) : hex.bytesToString(digestbytes)
         );
     }
 };

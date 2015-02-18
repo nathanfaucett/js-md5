@@ -23,7 +23,9 @@
   "dependencies": {
     "is_array": "nathanfaucett/is_array",
     "fast_slice": "nathanfaucett/fast_slice",
-    "charenc": "0.0.1",
-    "crypt": "0.0.1"
+    "bin_encoding": "nathanfaucett/bin_encoding",
+    "utf8_encoding": "nathanfaucett/utf8_encoding",
+    "hex_encoding": "nathanfaucett/hex_encoding",
+    "crypto_browser": "nathanfaucett/crypto_browser"
   }
 }
