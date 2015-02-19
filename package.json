@@ -26,6 +26,7 @@
     "bin_encoding": "nathanfaucett/bin_encoding",
     "utf8_encoding": "nathanfaucett/utf8_encoding",
     "hex_encoding": "nathanfaucett/hex_encoding",
+    "words_encoding": "nathanfaucett/words_encoding",
     "crypto_browser": "nathanfaucett/crypto_browser"
   }
 }

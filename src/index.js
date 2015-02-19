@@ -3,7 +3,8 @@ var isArray = require("is_array"),
     crypto = require("crypto_browser"),
     hex = require("hex_encoding"),
     utf8 = require("utf8_encoding"),
-    bin = require("bin_encoding");
+    bin = require("bin_encoding"),
+    words = require("words_encoding");
 
 
 function FF(a, b, c, d, x, s, t) {
@@ -41,7 +42,7 @@ function md5(message, options) {
         message = message.toString();
     }
 
-    m = crypto.bytesToWords(message);
+    m = words.bytesToWords(message);
     l = message.length * 8;
     a = 1732584193;
     b = -271733879;
@@ -148,7 +149,7 @@ module.exports = function(message, options) {
     if (message == null) {
         throw new TypeError("");
     } else {
-        digestbytes = crypto.wordsToBytes(md5(message, options));
+        digestbytes = words.wordsToBytes(md5(message, options));
         return options && options.asBytes ? digestbytes : (
             options && options.asString ? bin.bytesToString(digestbytes) : hex.bytesToString(digestbytes)
         );
