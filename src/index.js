@@ -7,6 +7,22 @@ var isArray = require("is_array"),
     words = require("words_encoding");
 
 
+module.exports = md5Wrap;
+
+
+function md5Wrap(message, options) {
+    var digestbytes;
+
+    if (message == null) {
+        throw new TypeError("");
+    } else {
+        digestbytes = words.wordsToBytes(md5(message, options));
+        return options && options.asBytes ? digestbytes : (
+            options && options.asString ? bin.bytesToString(digestbytes) : hex.bytesToString(digestbytes)
+        );
+    }
+}
+
 function FF(a, b, c, d, x, s, t) {
     var n = a + (b & c | ~b & d) + (x >>> 0) + t;
     return ((n << s) | (n >>> (32 - s))) + b;
@@ -141,17 +157,3 @@ function md5(message, options) {
 
     return crypto.endian([a, b, c, d]);
 }
-
-
-module.exports = function(message, options) {
-    var digestbytes;
-
-    if (message == null) {
-        throw new TypeError("");
-    } else {
-        digestbytes = words.wordsToBytes(md5(message, options));
-        return options && options.asBytes ? digestbytes : (
-            options && options.asString ? bin.bytesToString(digestbytes) : hex.bytesToString(digestbytes)
-        );
-    }
-};
