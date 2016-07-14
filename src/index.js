@@ -1,10 +1,10 @@
-var isArray = require("is_array"),
-    fastSlice = require("fast_slice"),
-    crypto = require("crypto_browser"),
-    hex = require("hex_encoding"),
-    utf8 = require("utf8_encoding"),
-    bin = require("bin_encoding"),
-    words = require("words_encoding");
+var isArray = require("@nathanfaucett/is_array"),
+    fastSlice = require("@nathanfaucett/fast_slice"),
+    crypto = require("@nathanfaucett/crypto_browser"),
+    hex = require("@nathanfaucett/hex_encoding"),
+    utf8 = require("@nathanfaucett/utf8_encoding"),
+    bin = require("@nathanfaucett/bin_encoding"),
+    words = require("@nathanfaucett/words_encoding");
 
 
 module.exports = md5Wrap;
